@@ -3,15 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.10.3",
+    "axios": "^0.18.0",
+    "babel-plugin-import": "^1.11.0",
+    "draft-js": "^0.10.5",
+    "draftjs-to-html": "^0.8.4",
+    "draftjs-to-markdown": "^0.5.1",
+    "html-to-draftjs": "^1.4.0",
+    "immutable": "^3.8.2",
+    "moment": "^2.22.2",
     "react": "^16.6.0",
+    "react-app-rewired": "^1.6.2",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "react-draft-wysiwyg": "^1.12.13",
+    "react-redux": "^5.1.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.5",
+    "redux": "^4.0.1",
+    "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test"
   },
   "eslintConfig": {
     "extends": "react-app"

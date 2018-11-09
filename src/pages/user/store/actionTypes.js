@@ -1,0 +1,3 @@
+export const INIT_USER_DATA = '/user/INIT_USER_DATA'
+export const INIT_USER_COLLECT_DATA = '/user/INIT_USER_COLLECT_DATA'
+

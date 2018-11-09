@@ -1,0 +1,3 @@
+export const INIT_USER_DATA = '/topic/INIT_USER_DATA'
+export const INIT_TOPIC_COLLECT_DATA = '/topic/INIT_TOPIC_COLLECT_DATA'
+
