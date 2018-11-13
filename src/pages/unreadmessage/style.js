@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-export const TopicCollectBox = styled.div`
+
+export const UnreadMsgBox = styled.div `
     width: 100%;
 `;
 
-export const TopicCollectContainer = styled.div`
+export const UnreadMsgContainer = styled.div `
     width: 90%;
     max-width: 1400px;
     min-width: 960px;
@@ -19,90 +20,66 @@ export const TopicCollectContainer = styled.div`
     }
 `;
 
-export const TopicCollectLeft = styled.div`
+export const UnreadMsgLeft = styled.div `
     float: left;
     width: 75%;
-    background: #fff;
-    .header {
-        padding: 10px;
-        background-color: #f6f6f6;
-        border-radius: 3px 3px 0 0;
-        a {
-            color: #80bd01;
-        }
-    }
-    .topic_collec_list {
-        margin-bottom: 5px;
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #f0f0f0;
-            &:hover {
-                background: #f5f5f5;
-            }
-            img {
-                width: 30px;
-                height: 30px;
-                border-radius: 4px;
-            }
-            .count {
-                display: inline-block;
-                width: 70px;
-                text-align: center;
-                vertical-align: middle;
-                .reply_count {
-                    color: #9e78c0;
-                }
-                .count_seperator {
-                    font-size: 10px;
-                    margin: 0 1px;
-                }
-                .visit_count {
-                    font-size: 10px;
-                    color: #b4b4b4;
-                }
-
-            }
-            .put_good {
-                display: inline-block;
-                background: #80bd01;
-                padding: 2px 4px;
-                font-size: 12px;
-                color: #fff;
-                border-radius: 3px;
-                vertical-align: middle;
-                margin-right: 15px;
-            }
-            .title {
-                display: inline-block;
-                width: 70%;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                vertical-align: middle;
-                cursor: pointer;
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-            .last_active_time {
-                float: right; 
-                margin-right: 10px;
-                margin-top: 6px;
-                font-size: 12px;
-                color: #778087;
-                letter-spacing: 1px;
-            }
-        }
-    }
 `;
 
-
-export const TopicCollectRight = styled.div`
+export const UnreadMsgRight = styled.div `
     float: right;
     width: 22%;
 `;
 
-export const TopicCollectPanel = styled.div`
+export const UnreadMsgPanel = styled.div `
+    margin-bottom: 20px;
+    background-color: #e1e1e1;
+    .header {
+        padding: 10px;
+        background-color: #f6f6f6;
+        border-radius: 3px 3px 0 0;
+        .PastInfo {
+            color: #000;
+        }
+        span {
+            margin: 0 3px;
+            color: #999;
+        }
+    }
+    .content {
+        padding: 10px;
+        background: #fff;
+    }
+    .pastinfo-content {
+        background: #fff;
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            span:nth-child(1) {
+                color: #08c;
+            }
+            span {
+                margin: 0 5px;
+                vertical-align: middle;
+            }
+            .at {
+                margin-left: 10px;
+            }
+            a {
+                display: inline-block;
+                max-width: 460px;
+                margin-left: 5px;
+                vertical-align: middle;
+                color: #08c;
+                &:hover {
+                    text-decoration: underline;
+                    color: #005580;
+                }
+            }
+        }
+    }
+`;
+
+export const UnreadMessagePanel = styled.div`
     width: 100%;
     .title {
         padding: 10px;
@@ -120,6 +97,13 @@ export const TopicCollectPanel = styled.div`
         span {
             margin-left: 13px;
             font-size: 17px;
+            a {
+                font-size: 14px;    
+                color: #778087;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
         p {
             margin-top: 10px;

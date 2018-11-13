@@ -173,6 +173,13 @@ export const ReplyItem = styled.div`
                     text-decoration: none;
                     margin-left: 5px;
                 }
+                &.author {
+                    margin-left: 10px;
+                    font-size: 12px;
+                    background: #6ba44e;
+                    padding: 2px 4px;
+                    color: #fff;
+                }
             }
         }
         .user_action {
@@ -198,6 +205,36 @@ export const ReplyItem = styled.div`
             border: 0;
         }
     }
+    .text {
+            position: relative;
+            margin-top: 10px;
+            width: 98%;
+            padding: 10px 10px 35px 10px;
+            border: none;
+            border-radius: 5px;
+            min-height: 150px;
+            box-shadow: 0 0 2px rgba(60,60,60,.5);
+        textarea {
+            width: 100%;
+            padding: 5px;
+            min-height: 150px;
+            border: none;
+            resize:none 
+        }
+        button {
+            position: absolute;
+            right: 35px;
+            bottom: 10px;
+            border: none;
+            font-size: 13px;
+            color: #fff;
+            border-radius: 3px;
+            padding: 3px 10px;
+            background-color: #08c;
+            cursor: pointer;
+        }
+    }
+    
 `;
 
 export const ReplyWindow = styled.div`
@@ -210,18 +247,25 @@ export const ReplyWindow = styled.div`
         background: #f6f6f6
     }
     .editor {
-        .editorClassName  {
-            padding: 0 10px;
-            min-height: 300px;
+        zoom: 1;
+        padding:10px;
+        &::after {
+            content: '';
+            clear: both;
+            height: 0;
+            display: block;
+            visibility: hidden;
         }
-        .rdw-dropdown-selectedtext {
-            color: #000;
+        textarea[name='editorReply'] {
+            width: 100%;
+            padding: 5px;
+            min-height: 150px;
+            border: none;
+            resize:none 
         }
     }
     .editor_buttons {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
+        float:right;
         border: none;
         color: #fff;
         border-radius: 3px;
@@ -269,7 +313,7 @@ export const SidebarPanel = styled.div`
     }
     .AdvertisingMap {
         display: block;
-        width: 270px;
+        width: auto;
         height: 85px;
         padding: 10px;
         padding-bottom: 0px;

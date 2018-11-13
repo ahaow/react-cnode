@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import {HeaderNav, HeaderContainer, HeaderLeft, HeaderRight, NavList} from './style'
 
 class Header extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            messageCount: null
+        }
         this.handleClearStorage = this.handleClearStorage.bind(this)
     }
     static contextTypes = {
@@ -14,9 +17,18 @@ class Header extends Component {
     };
 
     componentWillMount() {
+        const token = JSON.parse(window.localStorage.getItem('UserInfo')).token;
+        axios.get(`https://cnodejs.org/api/v1/message/count?accesstoken=${token}`).then((res) => {
+            if(res.data.success) {
+                this.setState({
+                    messageCount: res.data.data
+                })
+            }
+        })
     }
 
     componentWillUpdate(nextProps, nextState) {
+
     }
     
     handleClearStorage () {
@@ -46,7 +58,9 @@ class Header extends Component {
                                     <li>
                                         <Link to='/'>首页</Link>
                                     </li>
-                                    <li>未读消息</li>
+                                    <li>
+                                        {this.state.messageCount > 0 ? <span>{this.state.messageCount}</span> : ''}
+                                        <Link to='/unreadmsg'>未读消息</Link></li>
                                     <li>新手入门</li>
                                     <li>API</li>
                                     <li>关于</li>

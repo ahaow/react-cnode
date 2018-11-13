@@ -63,6 +63,14 @@ export const NavList = styled.ul`
         font-size: 13px;
         color: #ccc;
         cursor: pointer;
+        span {
+            border-radius: 8px;
+            padding: 1px 5px;
+            background-color: #80bd01;
+            color: #fff;
+            margin-right: .5em;
+            text-align: center;
+        }
         a {
             color: #ccc;
             text-decoration: none;

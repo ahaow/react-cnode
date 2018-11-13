@@ -30,11 +30,9 @@ const Information = () => {
                     <div className="ewm">
                         <img src="//static.cnodejs.org/FtG0YVgQ6iginiLpf9W4_ShjiLfU" alt="ewm"/>
                     </div>
-                    
                 </InnerAds>
             </InformationBox>
         </Fragment>
-        
     )
 }
 

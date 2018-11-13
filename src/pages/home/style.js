@@ -115,7 +115,7 @@ export const TopicListCell = styled.div`
                 color: #fff;
             }
             &.put_other {
-                background: #e5e5e5
+                background: #e5e5e5;
                 color: #999;
             }
            
@@ -149,6 +149,14 @@ export const TopicListCell = styled.div`
             margin-left: 10px;
             font-size: 12px;
             color: #778087;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .topic_title_wrapper {
+            .topic_title {
+                width: 380px;
+            }
         }
     }
 `;
@@ -280,6 +288,21 @@ export const NoReplyTopic = styled.div`
             transform: translateX(-100px);
         }
     }
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+        .inner {
+            background: #fff;
+            padding: 10px;
+            img {
+                width: 150px;
+                height: 150px;
+                margin-left: 15px;
+                transform: translateX(0);
+
+            }
+        }
+    }
 `;
+
+
 
 

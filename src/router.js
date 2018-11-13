@@ -14,6 +14,7 @@ import Newtopic from './pages/newtopic'
 import EditTopic from './pages/edittopic'
 import User from './pages/user'
 import TopicCollect from './pages/topiccollect'
+import UnreadMsg from './pages/unreadmessage/index'
 
 class Router extends Component {
     render() {
@@ -44,6 +45,7 @@ class Router extends Component {
                                     <Route exact path='/edittopic' component={EditTopic} />  
                                     <Route exact path='/user' component={User} />
                                     <Route exact path='/topic-collect' component={TopicCollect} />
+                                    <Route exact path='/unreadmsg' component={UnreadMsg} />
                                     <Redirect exact path="/" to={{ pathname: '/home/all' }}/>
                                     <Route exact component={NoFound}/>
                                 </Switch>
