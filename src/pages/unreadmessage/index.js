@@ -20,7 +20,6 @@ class UnreadMsg extends Component {
         const loginname = JSON
             .parse(window.localStorage.getItem('UserInfo'))
             .loginname;
-        console.log(has_read_messages)
         return (
             <UnreadMsgBox>
                 <UnreadMsgContainer>

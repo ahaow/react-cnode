@@ -10,34 +10,49 @@ class Header extends Component {
         this.state = {
             messageCount: null
         }
-        this.handleClearStorage = this.handleClearStorage.bind(this)
+        this.handleClearStorage = this
+            .handleClearStorage
+            .bind(this)
     }
     static contextTypes = {
-        router: PropTypes.object.isRequired,
+        router: PropTypes.object.isRequired
     };
 
     componentWillMount() {
-        const token = JSON.parse(window.localStorage.getItem('UserInfo')).token;
-        axios.get(`https://cnodejs.org/api/v1/message/count?accesstoken=${token}`).then((res) => {
-            if(res.data.success) {
-                this.setState({
-                    messageCount: res.data.data
+        if (window.localStorage.getItem('UserInfo')) {
+            const token = JSON
+                .parse(window.localStorage.getItem('UserInfo'))
+                .token;
+            axios
+                .get(`https://cnodejs.org/api/v1/message/count?accesstoken=${token}`)
+                .then((res) => {
+                    if (res.data.success) {
+                        this.setState({messageCount: res.data.data})
+                    }
                 })
-            }
-        })
-    }
-
-    componentWillUpdate(nextProps, nextState) {
+        } else {
+            return false;
+        }
 
     }
-    
-    handleClearStorage () {
-        window.localStorage.removeItem('UserInfo')
+
+    componentWillUpdate(nextProps, nextState) {}
+
+    handleClearStorage() {
+        window
+            .localStorage
+            .removeItem('UserInfo')
         this.forceUpdate();
-        this.context.router.history.push('/')
+        this
+            .context
+            .router
+            .history
+            .push('/')
     }
     render() {
-        const UserInfo = window.localStorage.getItem('UserInfo')
+        const UserInfo = window
+            .localStorage
+            .getItem('UserInfo')
         return (
             <HeaderNav>
                 <HeaderContainer>
@@ -59,13 +74,16 @@ class Header extends Component {
                                         <Link to='/'>首页</Link>
                                     </li>
                                     <li>
-                                        {this.state.messageCount > 0 ? <span>{this.state.messageCount}</span> : ''}
-                                        <Link to='/unreadmsg'>未读消息</Link></li>
+                                        {this.state.messageCount > 0
+                                            ? <span>{this.state.messageCount}</span>
+                                            : ''}
+                                        <Link to='/unreadmsg'>未读消息</Link>
+                                    </li>
                                     <li>新手入门</li>
                                     <li>API</li>
                                     <li>关于</li>
                                     <li>设置</li>
-                                    <li onClick={this.handleClearStorage} >退出</li>
+                                    <li onClick={this.handleClearStorage}>退出</li>
                                 </NavList>
                             : <NavList>
                                 <li>
@@ -86,8 +104,7 @@ class Header extends Component {
             </HeaderNav>
         )
     }
-    componentDidUpdate(prevProps, prevState) {
-    }
+    componentDidUpdate(prevProps, prevState) {}
 }
 
 export default Header;

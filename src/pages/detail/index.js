@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import { Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
@@ -98,25 +99,30 @@ class Detail extends Component {
     }
     // 回复
     handleReply(item,id) {
-        const token = JSON.parse(window.localStorage.getItem('UserInfo')).token
-        console.log(item.text)
-        if(item.text === '') {
-            alert('内容不能为空')
+        if(JSON.parse(window.localStorage.getItem('UserInfo'))) {
+            const token = JSON.parse(window.localStorage.getItem('UserInfo')).token
+            if(item.text === '') {
+                alert('内容不能为空')
+            } else {
+                axios.post(`https://cnodejs.org/api/v1/topic/${id}/replies`,{
+                    accesstoken: token,
+                    content: item.text,
+                    reply_id: item.reply_id
+                }).then((res) => {
+                    if(res.data.success) {
+                        alert('评论成功');
+                        this.props.history.go();
+                        window.scrollTo(0,0);
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
         } else {
-            axios.post(`https://cnodejs.org/api/v1/topic/${id}/replies`,{
-                accesstoken: token,
-                content: item.text,
-                reply_id: item.reply_id
-            }).then((res) => {
-                if(res.data.success) {
-                    alert('评论成功');
-                    this.props.history.go();
-                    window.scrollTo(0,0);
-                }
-            }).catch((err) => {
-                console.log(err);
-            })
+            alert('请先去登录');
+            this.props.history.replace('/login');
         }
+        
     }
 
     // 最下面编辑评论
@@ -127,24 +133,30 @@ class Detail extends Component {
     }
     // 最下面编辑回复
     handleSubmitReply (id) {
-        const token = JSON.parse(window.localStorage.getItem('UserInfo')).token
         const { editorReplyValue } = this.state;
-        if(editorReplyValue === '') {
-            alert('内容不能为空');
+        if(JSON.parse(window.localStorage.getItem('UserInfo'))) {
+            const token = JSON.parse(window.localStorage.getItem('UserInfo')).token;
+            if(editorReplyValue === '') {
+                alert('内容不能为空');
+            } else {
+                axios.post(`https://cnodejs.org/api/v1/topic/${id}/replies`,{
+                    accesstoken: token,
+                    content: editorReplyValue,
+                }).then((res) => {
+                    if(res.data.success) {
+                        alert('评论成功');
+                        this.props.history.go();
+                        window.scrollTo(0,0);
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
         } else {
-            axios.post(`https://cnodejs.org/api/v1/topic/${id}/replies`,{
-                accesstoken: token,
-                content: editorReplyValue,
-            }).then((res) => {
-                if(res.data.success) {
-                    alert('评论成功');
-                    this.props.history.go();
-                    window.scrollTo(0,0);
-                }
-            }).catch((err) => {
-                console.log(err);
-            })
+            alert('请先去登录');
+            this.props.history.replace('/login');
         }
+       
     }
     // 点赞
     handleGivePraise(item) {
@@ -248,10 +260,14 @@ class Detail extends Component {
 
         // 判断是否是作者
         const is_author = (item) => {
-            if(JSON.parse(UserInfo).loginname === item.author.loginname) {
-                return  <span className='author'>作者</span>
+            if(UserInfo === null) {
+                return false;
             } else {
-                return ''
+                if(JSON.parse(UserInfo).loginname === item.author.loginname) {
+                    return  <span className='author'>作者</span>
+                } else {
+                    return ''
+                }
             }
         }
 

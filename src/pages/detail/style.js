@@ -130,7 +130,11 @@ export const TopicInnner = styled.div`
     blockquote {
         padding: 0 0 0 15px;
         margin: 0 0 20px;
-        border-left: 5px solid #eee;
+        border-left: 5px solid #eee; 
+        img {
+            width: 100%;
+            margin: 10px 0;
+        }
     }
 `;
 

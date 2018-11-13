@@ -48,6 +48,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+p {
+	margin-top: 0; 
+    margin-bottom: 1em;
+}
 #root {
 	background: #e0e0e0;
 }
