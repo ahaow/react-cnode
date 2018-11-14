@@ -4,7 +4,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div>我是啊啊啊啊</div>
+            <div>我是404</div>
         )
     }
 }
